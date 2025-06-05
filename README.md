@@ -81,8 +81,8 @@ Got improvements or ideas? Open an [issue](https://github.com/Raghul-M/quay-push
 
 
 
-## 🙋‍♂ Maintainer
 
-Made with ❤️ by [Raghul M](https://www.linkedin.com/in/m-raghul/)
+
+**Made with ❤️ by [Raghul M](https://www.linkedin.com/in/m-raghul/)**
 
 
