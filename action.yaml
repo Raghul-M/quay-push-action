@@ -1,0 +1,57 @@
+name: 'Quay-Push-Action'
+description: 'Login and push container images to Quay.io registry.'
+author: 'Raghul M'
+
+branding:
+  icon: 'upload-cloud'
+  color: 'red'
+
+inputs:
+  quay_username:
+    description: 'Quay.io Username'
+    required: true
+  quay_password:
+    description: 'Quay.io Password or Robot Token'
+    required: true
+  repository_name:
+    description: 'Quay.io repository name (e.g., raghul/app)'
+    required: true
+  image_tag:
+    description: 'Image tag (e.g., latest or v1.0). Defaults to commit SHA if not set.'
+    required: false
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Login to Quay
+      shell: bash
+      run: |
+        echo "${{ inputs.quay_password }}" | docker login -u "${{ inputs.quay_username }}" --password-stdin quay.io
+
+    - name: Check for Dockerfile
+      shell: bash
+      run: |
+        if [ ! -f Dockerfile ]; then
+          echo "❌ Dockerfile not found. Make sure to checkout the code or place the Dockerfile in the root."
+          exit 1
+        fi
+
+    - name: Set tag
+      id: tag
+      shell: bash
+      run: |
+        if [ -z "${{ inputs.image_tag }}" ]; then
+          echo "tag=${GITHUB_SHA}" >> $GITHUB_OUTPUT
+        else
+          echo "tag=${{ inputs.image_tag }}" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Build Docker Image
+      shell: bash
+      run: |
+        docker build -t quay.io/${{ inputs.repository_name }}:${{ steps.tag.outputs.tag }} .
+
+    - name: Push Docker Image
+      shell: bash
+      run: |
+        docker push quay.io/${{ inputs.repository_name }}:${{ steps.tag.outputs.tag }}
