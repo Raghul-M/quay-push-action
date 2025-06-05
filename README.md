@@ -48,7 +48,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Use Quay Push Action
-        uses: raghul-m/quay-push-action@v1
+        uses: Raghul-M/quay-push-action@main
         with:
           quay_username: ${{ secrets.QUAY_USERNAME }}
           quay_password: ${{ secrets.QUAY_PASSWORD }}
