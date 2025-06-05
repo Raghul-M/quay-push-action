@@ -3,7 +3,7 @@
 
 #  📤 Quay Push Action
 
-[![GitHub release](https://img.shields.io/github/v/release/raghul-m/quay-push-action)](https://github.com/raghul-m/quay-push-action/releases) [![Marketplace](https://img.shields.io/badge/GitHub%20Actions-Quay--Push--Action-blue?logo=github-actions&logoColor=white)](https://github.com/marketplace/actions/quay-push-action) [![License: MIT](https://img.shields.io/badge/License-Apache2.0-green.svg)](LICENSE)
+[![GitHub release](https://img.shields.io/github/v/release/raghul-m/quay-push-action)](https://github.com/raghul-m/quay-push-action/releases) [![Marketplace](https://img.shields.io/badge/GitHub%20Actions-Quay--Push--Action-blue?logo=github-actions&logoColor=white)](https://github.com/marketplace/actions/quay-push-action) [![License: MIT](https://img.shields.io/badge/License-Apache2.0-green.svg)](LICENSE) ![GitHub Marketplace](https://img.shields.io/badge/GitHub%20Marketplace-Live-blue?logo=github)
 
 A lightweight and reusable GitHub  Action to **build and push Container images to Quay.io Registry**  perfect for CI/CD workflows that require seamless container registry integration within Github Workflows
 
