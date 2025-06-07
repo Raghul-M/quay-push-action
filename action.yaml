@@ -19,6 +19,10 @@ inputs:
   image_tag:
     description: 'Image tag (e.g., latest or v1.0). Defaults to commit SHA if not set.'
     required: false
+  context:
+    description: 'Context directory for the Docker build. Defaults to the root of the repository.'
+    required: false
+    default: '.'
 
 runs:
   using: 'composite'
@@ -49,7 +53,7 @@ runs:
     - name: Build Docker Image
       shell: bash
       run: |
-        docker build -t quay.io/${{ inputs.repository_name }}:${{ steps.tag.outputs.tag }} .
+        docker build -t quay.io/${{ inputs.repository_name }}:${{ steps.tag.outputs.tag }} ${{ inputs.context }}
 
     - name: Push Docker Image
       shell: bash

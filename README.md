@@ -54,6 +54,7 @@ jobs:
           quay_password: ${{ secrets.QUAY_PASSWORD }}
           repository_name: raghul-m/myapp
           image_tag: latest  # optional
+          context: ./Configurations/Containerfile #default root folder
 ````
 
 
